@@ -7,13 +7,13 @@
 ### We are getting value 0 when a sequence of 1011 is detected. Lets verify it from the last time we observed 1 because from that we can know about the internal state of FSM which is SEQ_1011.
 ### Inputs after last time output was 1(at 85000 ns) are 1011, the states of the FSM after each input as per model and as per buggy design are tables below.
 
-| Input: | Model State: | Buggy Design State: |   |   |
-|--------|--------------|---------------------|---|---|
-| 1      | SEQ_1011     | SEQ_1011            |   |   |
-| 1      | SEQ_1        | IDLE                |   |   |
-| 0      | SEQ_10       | IDLE                |   |   |
-| 1      | SEQ_101      | SEQ_1               |   |   |
-| 1      | SEQ_1011     | SEQ_1               |   |   |
+| Input: | Model State: | Buggy Design State: |
+|--------|--------------|---------------------|
+| 1      | SEQ_1011     | SEQ_1011            |
+| 1      | SEQ_1        | IDLE                |
+| 0      | SEQ_10       | IDLE                |
+| 1      | SEQ_101      | SEQ_1               |
+| 1      | SEQ_1011     | SEQ_1               |
 
 ### Here we see that when current state is SEQ_1011 or SEQ_1 which we hace proved are equivalent for non overlapping detector when input is 1 the next state should be SEQ_1 while it is going to IDLE for buggy design. Because we have just copied the next state code from SEQ_1 to SEQ_1011 both these states needs to be rectified.
 ### After rectifying this bug lets verify again.
