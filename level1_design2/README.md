@@ -38,3 +38,7 @@
 | 0     | SEQ_10      | IDLE              |
 | 1     | SEQ_101     | SEQ_1             |
 | 1     | SEQ_1011    | SEQ_1             |
+
+### From above table we can see differences coming after state SEQ_101 when output is 0 while current state is SEQ_101, next state should be SEQ_10, but it is IDLE in buggy design, let's rectify it and verify again.
+### There are no additional bugs found we tried to run it for 5000 iterations. Next we tested if the reset key worked properly or not in another test called test_seq_bug_reset_check. As shown below the reset logic is also working as expected.
+![](https://github.com/vyomasystems-lab/challenges-Santosh3672/blob/master/level1_design2/Pic4.JPG)
