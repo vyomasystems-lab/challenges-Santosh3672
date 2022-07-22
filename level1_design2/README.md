@@ -17,3 +17,24 @@
 
 ### Here we see that when current state is SEQ_1011 or SEQ_1 which we hace proved are equivalent for non overlapping detector when input is 1 the next state should be SEQ_1 while it is going to IDLE for buggy design. Because we have just copied the next state code from SEQ_1 to SEQ_1011 both these states needs to be rectified.
 ### After rectifying this bug lets verify again.
+![](https://github.com/vyomasystems-lab/challenges-Santosh3672/blob/master/level1_design2/Pic3.JPG)
+### Again lets follow previous strategy to Debug the cause of error by comparing MODEL states and Buggy design states. We will start from time 475000 ns where output was 1 hence state was known to us i.e. SEQ_1011.
+
+| Input | Model State | Bugy Design State |
+|-------|-------------|-------------------|
+| 1     | SEQ_1011    | SEQ_1011          |
+| 1     | SEQ_1       | SEQ_1             |
+| 1     | SEQ_1       | SEQ_1             |
+| 1     | SEQ_1       | SEQ_1             |
+| 0     | SEQ_10      | SEQ_10            |
+| 0     | IDLE        | IDLE              |
+| 1     | SEQ_1       | SEQ_1             |
+| 0     | SEQ_10      | SEQ_10            |
+| 0     | IDLE        | IDLE              |
+| 1     | SEQ_1       | SEQ_1             |
+| 1     | SEQ_1       | SEQ_1             |
+| 0     | SEQ_10      | SEQ_10            |
+| 1     | SEQ_101     | SEQ_101           |
+| 0     | SEQ_10      | IDLE              |
+| 1     | SEQ_101     | SEQ_1             |
+| 1     | SEQ_1011    | SEQ_1             |
